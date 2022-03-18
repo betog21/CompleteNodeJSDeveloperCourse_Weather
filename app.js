@@ -20,7 +20,7 @@ const urlGEO = `https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.
 request({ url: urlGEO, json: true }, (error, response) => {
   if (error) {
     console.error("Error geocoding request.");
-    return
+    return;
   }
 
   const responseHasfeatures = response.body.features.length;
@@ -33,3 +33,17 @@ request({ url: urlGEO, json: true }, (error, response) => {
     console.error("No features founded.");
   }
 });
+
+const geoCode = (address, calback) => {
+  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
+    address
+  )}.json?access_token=${process.env.ACCESS_TOKEN}`;
+
+  request({ url, json: true },(error,data)=>{
+    if(error){
+      calback('Unable to connect to location services.')
+    }
+  });
+};
+
+geoCode("León", (error, data) => {});
