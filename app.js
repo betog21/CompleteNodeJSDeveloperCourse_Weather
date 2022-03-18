@@ -18,8 +18,18 @@ request({ url, json: true }, (error, response) => {
 
 const urlGEO = `https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=${process.env.ACCESS_TOKEN}`;
 request({ url: urlGEO, json: true }, (error, response) => {
-  const centerArray = response.body.features[0].center;
-  const longitude = centerArray[0];
-  const latitude = centerArray[1];
-  console.log("Longitude: ", longitude, "Latitude: ", latitude);
+  if (error) {
+    console.error("Error geocoding request.");
+    return
+  }
+
+  const responseHasfeatures = response.body.features.length;
+  if (responseHasfeatures) {
+    const centerArray = response.body.features[0].center;
+    const longitude = centerArray[0];
+    const latitude = centerArray[1];
+    console.log("Longitude: ", longitude, "Latitude: ", latitude);
+  } else {
+    console.error("No features founded.");
+  }
 });
