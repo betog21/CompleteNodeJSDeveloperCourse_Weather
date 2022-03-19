@@ -1,5 +1,6 @@
 require("dotenv").config();
 const request = require("request");
+const geoCode = require("./utils/geocode");
 
 const url = `http://api.weatherstack.com/current?access_key=${process.env.ACCESSKEY}&query=37.8267,-122.4233`;
 
@@ -34,16 +35,6 @@ request({ url: urlGEO, json: true }, (error, response) => {
   }
 });
 
-const geoCode = (address, calback) => {
-  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
-    address
-  )}.json?access_token=${process.env.ACCESS_TOKEN}`;
-
-  request({ url, json: true },(error,data)=>{
-    if(error){
-      calback('Unable to connect to location services.')
-    }
-  });
-};
-
-geoCode("León", (error, data) => {});
+geoCode("Boston", (error, data) => {
+  console.log(data);
+});
