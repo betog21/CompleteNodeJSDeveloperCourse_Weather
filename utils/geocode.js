@@ -5,14 +5,14 @@ const geoCode = (address, calback) => {
     address
   )}.json?access_token=${process.env.ACCESS_TOKEN}`;
 
-  request({ url, json: true }, (error, response) => {
+  request({ url, json: true }, (error, { body }) => {
     if (error) {
       calback("Unable to connect to location services.", undefined);
-    } else if (response.body.features.length === 0) {
+    } else if (body.features.length === 0) {
       calback("Unable to find location. Try another search.", undefined);
     } else {
-      const centerArray = response.body.features[0].center;
-      const location = response.body.features[0].place_name;
+      const centerArray = body.features[0].center;
+      const location = body.features[0].place_name;
       calback(undefined, {
         latitude: centerArray[1],
         longitude: centerArray[0],
