@@ -10,10 +10,10 @@ npm install
 3. Create a .env file and set this environment variables:
 ```sh
 # For the weather app
-ACCESSKEY='a26de20a3ef25da2f460223df193f31c'
+ACCESSKEY='VALUE'
 
 # For the map app
-ACCESS_TOKEN='pk.eyJ1IjoiZ2JldG8yMSIsImEiOiJjbDB3dmh2Z3owbGVrM2NqbmdmdjZpcWNxIn0.hZ26zSwD1VuViVzaGzUcWQ'
+ACCESS_TOKEN='VALUE'
 ```
 4. Run the command with the name of the place to search the weather for. If the name of te place has two or more words, use double commas.
 ```sh
