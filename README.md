@@ -1,5 +1,28 @@
 # CompleteNodeJSDeveloperCourse_Weather
 Initial commit on dev branch.
+
+## Instructions:
+1. Clone the repo.
+2. Install dependencies:
+```sh
+npm install
+```
+3. Create a .env file and set this environment variables:
+```sh
+# For the weather app
+ACCESSKEY='a26de20a3ef25da2f460223df193f31c'
+
+# For the map app
+ACCESS_TOKEN='pk.eyJ1IjoiZ2JldG8yMSIsImEiOiJjbDB3dmh2Z3owbGVrM2NqbmdmdjZpcWNxIn0.hZ26zSwD1VuViVzaGzUcWQ'
+```
+4. Run the command with the name of the place to search the weather for. If the name of te place has two or more words, use double commas.
+```sh
+# Example for Piladelphia
+node app.js Philadelphia
+
+# Example for New York
+node app.js "New York"
+```
 ---
 
 ## Notes:
